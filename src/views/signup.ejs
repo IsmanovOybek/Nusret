@@ -1,0 +1,141 @@
+<<!DOCTYPE html>
+    <html lang="uz">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ro'yxatdan o'tish</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f7f9fc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .signup-container {
+                background: white;
+                padding: 2.5rem 3rem;
+                border-radius: 8px;
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+                width: 400px;
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 2rem;
+                color: #333;
+            }
+
+            label {
+                display: block;
+                margin-top: 1rem;
+                font-weight: 600;
+                color: #444;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            input[type="tel"] {
+                width: 100%;
+                padding: 0.6rem;
+                margin-top: 0.4rem;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 1rem;
+                box-sizing: border-box;
+                transition: border-color 0.3s ease;
+            }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus,
+            input[type="tel"]:focus {
+                border-color: #007bff;
+                outline: none;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 2rem;
+                padding: 0.75rem;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                font-size: 1.2rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            .error {
+                margin-top: 1rem;
+                color: #d93025;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            .footer-text {
+                margin-top: 1.5rem;
+                text-align: center;
+                font-size: 0.95rem;
+                color: #555;
+            }
+
+            .footer-text a {
+                color: #007bff;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .footer-text a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="signup-container">
+            <h2>Ro'yxatdan o'tish</h2>
+
+            <% if (typeof error !=='undefined' ) { %>
+                <div class="error">
+                    <%= error %>
+                </div>
+                <% } %>
+
+                    <form action="/signup" method="POST">
+                        <label for="memberNick">Foydalanuvchi nomi (Nick)</label>
+                        <input type="text" id="memberNick" name="memberNick"
+                            placeholder="Foydalanuvchi nomingizni kiriting" required
+                            value="<%= typeof memberNick !== 'undefined' ? memberNick : '' %>" />
+
+                        <label for="memberId">Foydalanuvchi ID</label>
+                        <input type="text" id="memberId" name="memberId" placeholder="Foydalanuvchi ID kiriting"
+                            required value="<%= typeof memberId !== 'undefined' ? memberId : '' %>" />
+
+                        <label for="memberPhone">Telefon raqami</label>
+                        <input type="tel" id="memberPhone" name="memberPhone" placeholder="010-0000-0000" required
+                            value="<%= typeof memberPhone !== 'undefined' ? memberPhone : '' %>" />
+
+                        <label for="memberPassword">Parol</label>
+                        <input type="password" id="memberPassword" name="memberPassword"
+                            placeholder="Parolingizni kiriting" required />
+
+                        <button type="submit">Ro'yxatdan o'tish</button>
+                    </form>
+
+                    <div class="footer-text">
+                        Hisobingiz bormi? <a href="/login">Kirish</a>
+                    </div>
+        </div>
+    </body>
+
+    </html>
